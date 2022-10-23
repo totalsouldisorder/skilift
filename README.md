@@ -1,6 +1,8 @@
 # ski lift
 the 'skiOS installer' (my Arch post-install script)
 
+![alt text](https://i.redd.it/f0494s9thev91.png)
+
 simply clone the repo, run chmod +x skilift.sh and then ./skilift.sh :))
 
 walkthrough:
