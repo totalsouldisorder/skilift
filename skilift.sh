@@ -10,14 +10,13 @@ echo
 echo "Installing skiOS packages now..."
 echo
 
-sudo pacman -S git
+sudo pacman -Sy --noconfirm git
 
 cd /opt
 sudo git clone https://aur.archlinux.org/yay-git.git
 sudo chown -R ski:ski ./yay-git
 cd yay-git
-makepkg -si
-
+makepkg -si --noconfirm
 
 PKGS=(
 		# XORG
@@ -47,11 +46,8 @@ PKGS=(
         # AUDIO
         'pipewire'                     # Low-latency audio/video router and processor
         'pipewire-alsa'                # Low-latency audio/video router and processor - ALSA configuration
-        'pipewire-jack'                # Low-latency audio/video router and processor - JACK support
-        'pipewire-pulse'               # Low-latency audio/video router and processor - PulseAudio replacement
         # VIRTUALIZATION
         'virtualbox'                   # Powerful x86 virtualization for enterprise as well as home use
-        'virtualbox-host-modules-arch' # Virtualbox host kernel modules for Arch Kernel
         # RICE
         'alacritty'                    # A cross-platform, GPU-accelerated terminal emulator
         'latte-dock'                   # A dock based on Plasma Frameworks
@@ -82,8 +78,11 @@ PKGS=(
 
 for PKG in "${PKGS[@]}"; do
     echo "Installing: ${PKG}"
-    LANG=C yay -S --noprovides --answerdiff None --answerclean None --mflags "--noconfirm" "$PKG"
+    LANG=C yay -S --noconfirm --answerdiff None --answerclean None "$PKG"
 done
+
+sudo systemctl enable sddm
+sudo systemctl enable NetworkManager.service
 
 echo
 echo "Thanks for using skiOS! <333"
