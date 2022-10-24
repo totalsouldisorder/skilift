@@ -3,7 +3,16 @@ the 'skiOS installer' (my Arch post-install script)
 
 ![alt text](https://i.redd.it/f0494s9thev91.png)
 
-simply clone the repo, run chmod +x skilift.sh and then ./skilift.sh :))
+installation guide :))
+```
+curl -O https://raw.githubusercontent.com/gucskifer/skilift/main/skilift.sh
+```
+```
+chmod +x skilift.sh
+```
+```
+./skilift.sh
+```
 
 walkthrough:
   - installs git and builds/installs yay
